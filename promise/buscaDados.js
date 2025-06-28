@@ -13,11 +13,11 @@ let promessaBusca = () => new Promise((resolve, reject) => {
         else reject('Aconteceu um erro no servidor! Dados não encontrado!')
     }, 5000) //5s
 });
-
 promessaBusca()
     .then(console.log)
     .catch((error) =>{
        // Executa o código novamente!
+            console.log("Teste")
         promessaBusca()
             .then(console.log)
             .catch(console.log)

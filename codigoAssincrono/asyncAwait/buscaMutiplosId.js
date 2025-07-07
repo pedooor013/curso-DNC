@@ -19,7 +19,7 @@ function buscaMutiplosIds(id){
                     console.log('Usuário encontrado!');
                     resolve(usuarioEncontrado)
                 }else{
-                    reject(`${id} não existe no banco de dados!`)
+                    reject(`O ID ${id} não existe no banco de dados!`)
                 }
         }, 0);
     });

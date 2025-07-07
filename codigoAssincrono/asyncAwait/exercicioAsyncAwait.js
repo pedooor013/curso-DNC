@@ -4,27 +4,26 @@ const usuarios = [
     { id: 3, nome: "Carol" },
 ];
 
-function buscarUsuarioPorId(array, id) {
+function buscarUsuarioPorId(id) {
     // Retorne uma Promise que simula uma consulta demorada ao banco de dados
-    let buscaUsuario = () => new Promise((resolve, reject) => {
-        let usuarioEncontrado = usuarios.some(idUsuario => idUsuario.id === id)
-        console.log('Buscando dados no banco de dados');
+    return new Promise((resolve, reject) => {
+        const usuarioEncontrado = usuarios.find((idUsuario) => idUsuario.id === id);
         setTimeout(() => {
-            if (usuarioEncontrado) {
-                console.log(`O usuário foi encontrado! O nome dele é ${usuarios.id.nome}`)
-                resolve(usuarios.id.nome)
+            if (usuarioEncontrado !== undefined) {
+                console.log(`O usuário foi encontrado!`)
+                resolve(usuarioEncontrado)
             } else {
-                reject(`No banco de dados não existe um usuário com o ID ${id}!`)
+                reject(`No banco de dados não existe um usuário com o ID ${id}`)
             }
-        }, 1); // 5s
+        }, 0); // 5s
     })
 }
 async function exibirUsuario(id){
     try{
         const resultadoBusca = await buscarUsuarioPorId(id);
+        console.log(`O usuário ${resultadoBusca.nome} foi encontrado`)
     }catch(error){
         console.log(error)
-        console.log('Deu erro')
     }
 }
 
